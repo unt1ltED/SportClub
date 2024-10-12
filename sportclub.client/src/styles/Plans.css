@@ -1,0 +1,23 @@
+/* Центрирование секций и карточек */
+.section-title {
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Стили карточек */
+.card {
+    background-color: var(--light-color);
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+}

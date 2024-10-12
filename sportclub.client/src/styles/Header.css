@@ -1,77 +1,3 @@
-/* Основные стили */
-body {
-    font-family: var(--font-family);
-    color: var(--dark-color);
-    background-color: #202020;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-/* Стили для контейнеров */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Стили для главного баннера */
-.hero {
-    background: url('gym-banner.jpg') center/cover no-repeat;
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    position: relative;
-}
-
-.hero-content {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 40px;
-    border-radius: 10px;
-    max-width: 600px;
-    text-align: center;
-}
-
-/* Центровка элементов внутри hero */
-.hero-title, .hero-subtitle, .hero-btn {
-    margin: 10px 0;
-}
-
-/* Центрирование секций и карточек */
-.section-title {
-    text-align: center;
-}
-
-.cards {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-/* Стили карточек */
-.card {
-    background-color: var(--light-color);
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 100%;
-    max-width: 300px;
-}
-
 /* Основные стили хедера */
 .header {
     background-color: #1f1f1f;
@@ -91,13 +17,13 @@ body {
         position: relative;
     }
 
-/* Логотип в левой части */
+/* Лого */
 .logo a {
     font-size: 1.5rem;
     color: white;
     text-decoration: none;
     font-weight: bold;
-    margin-right: auto; /* Лого в левой части */
+    margin-right: auto;
 }
 
 /* Навигация */
@@ -125,11 +51,11 @@ body {
                 border-radius: 5px;
             }
 
-/* Кнопки аутентификации в правой части */
+/* Кнопки аутентификации */
 .auth-buttons {
     display: flex;
     gap: 15px;
-    margin-left: auto; /* Кнопки логина и регистрации справа */
+    margin-left: auto;
 }
 
     .auth-buttons .btn {
@@ -213,13 +139,4 @@ body {
         flex-direction: row-reverse;
         justify-content: space-between;
     }
-}
-
-/* Центровка футера */
-.footer {
-    background-color: var(--dark-color);
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    width: 100%;
 }

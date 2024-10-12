@@ -1,0 +1,8 @@
+/* Центровка футера */
+.footer {
+    background-color: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
