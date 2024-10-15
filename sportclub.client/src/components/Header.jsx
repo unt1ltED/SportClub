@@ -1,7 +1,18 @@
-import React from 'react';
-import './styles/Header.css';
+import React, { useState } from 'react';
+import '../styles/Header.css';
+import LoginModal from '../Login';
+import RegisterModal from '../Register';
 
 const Header = () => {
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showRegisterModal, setShowRegisterModal] = useState(false);
+
+    const openLoginModal = () => setShowLoginModal(true);
+    const closeLoginModal = () => setShowLoginModal(false);
+
+    const openRegisterModal = () => setShowRegisterModal(true);
+    const closeRegisterModal = () => setShowRegisterModal(false);
+
     return (
         <header className="header">
             <div className="container">
@@ -17,8 +28,8 @@ const Header = () => {
                     </ul>
                 </nav>
                 <div className="auth-buttons">
-                    <a href="/login" className="btn login">Log In</a>
-                    <a href="/register" className="btn register">Registration</a>
+                    <button className="btn login" onClick={openLoginModal}>Log In</button>
+                    <button className="btn register" onClick={openRegisterModal}>Registration</button>
                 </div>
                 <div className="burger">
                     <span></span>
@@ -26,6 +37,10 @@ const Header = () => {
                     <span></span>
                 </div>
             </div>
+
+            {/* Модальные окна */}
+            {showLoginModal && <LoginModal closeModal={closeLoginModal} />}
+            {showRegisterModal && <RegisterModal closeModal={closeRegisterModal} />}
         </header>
     );
 };

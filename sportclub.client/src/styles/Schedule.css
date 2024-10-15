@@ -1,21 +1,26 @@
+/* Стили для расписания */
 .schedule {
     padding: 40px 0;
     text-align: center;
 }
 
-.schedule p {
-    margin: 20px 0;
+.schedule-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
 }
 
-.btn-secondary {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+    .schedule-table th, .schedule-table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
 
-.btn-secondary:hover {
-    background-color: #0056b3;
-}
+    .schedule-table th {
+        background-color: var(--light-color);
+    }
+
+    .schedule-table td {
+        background-color: #f9f9f9;
+    }

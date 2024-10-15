@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/Coaches.css';
+import '../styles/Coaches.css';
 
 const Coaches = () => {
     return (
