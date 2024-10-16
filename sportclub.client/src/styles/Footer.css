@@ -1,8 +1,30 @@
-/* Центровка футера */
 .footer {
-    background-color: var(--dark-color);
+    background-color: #1f1f1f;
     color: white;
+    padding: 20px;
     text-align: center;
-    padding: 20px 0;
-    width: 100%;
+    left: 0;
+    right: 0;
 }
+
+    .footer nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+        .footer nav ul li {
+            display: inline;
+        }
+
+            .footer nav ul li a {
+                color: white;
+                text-decoration: none;
+            }
+
+                .footer nav ul li a:hover {
+                    text-decoration: underline;
+                }

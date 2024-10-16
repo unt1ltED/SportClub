@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/Header.css';
 import LoginModal from '../Login';
 import RegisterModal from '../Register';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -21,10 +22,10 @@ const Header = () => {
                 </div>
                 <nav className="nav">
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/tariffs">Tariffs</a></li>
-                        <li><a href="/schedule">Schedule</a></li>
-                        <li><a href="/contact">Contact</a></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/tariffs">Tariffs</Link></li>
+                        <li><Link to="/schedule">Schedule</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
                     </ul>
                 </nav>
                 <div className="auth-buttons">
@@ -38,7 +39,6 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Модальные окна */}
             {showLoginModal && <LoginModal closeModal={closeLoginModal} />}
             {showRegisterModal && <RegisterModal closeModal={closeRegisterModal} />}
         </header>

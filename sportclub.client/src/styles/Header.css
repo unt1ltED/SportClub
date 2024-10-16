@@ -4,7 +4,11 @@
     padding: 20px 0;
     width: 100%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
+    position:fixed;
+    top: 0; /* ¬верху страницы */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* ”бедитесь, что он поверх контента */
 }
 
     .header .container {

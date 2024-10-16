@@ -1,4 +1,3 @@
-/* Стили для главного баннера */
 .hero {
     background: url('D:/SportClub/sportclub.client/src/img/gym-banner.jpg') center/cover no-repeat;
     width: 100%;
@@ -19,7 +18,6 @@
     text-align: center;
 }
 
-/* Центровка элементов внутри hero */
 .hero-title, .hero-subtitle, .hero-btn {
     margin: 10px 0;
 }
