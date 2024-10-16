@@ -18,6 +18,7 @@ const Plans = () => {
                 </div>
             </div>
         </section>
+
     );
 };
 

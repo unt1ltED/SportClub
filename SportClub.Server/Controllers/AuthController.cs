@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 using SportClub.Server.Models;
 using Microsoft.EntityFrameworkCore;
 using SportClub.Server.Services;
@@ -14,9 +15,10 @@ namespace SportClub.Server.Controllers
         private readonly AppDbContext _context;
         private readonly AuthService _authService;
 
-        public AuthController(AppDbContext context)
+        public AuthController(AppDbContext context, AuthService authService)
         {
             _context = context;
+            _authService = authService ?? throw new ArgumentNullException(nameof(authService));
         }
 
         [HttpPost("register")]
@@ -64,5 +66,4 @@ namespace SportClub.Server.Controllers
             return Ok(new { Token = sessionToken });
         }
     }
-
 }

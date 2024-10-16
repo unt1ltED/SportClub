@@ -5,6 +5,7 @@ const Coaches = () => {
     return (
         <section className="coaches">
             <div className="container">
+
                 <h2 className="section-title">Our Coaches</h2>
                 <div className="cards">
                     <div className="card">

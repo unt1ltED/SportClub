@@ -1,13 +1,14 @@
 .hero {
-    background: url('D:/SportClub/sportclub.client/src/img/gym-banner.jpg') center/cover no-repeat;
+    background: url('src/img/gym-banner.jpg') center/cover no-repeat;
     width: 100%;
-    height: 60vh;
+    height: 30vh;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     text-align: center;
     position: relative;
+    
 }
 
 .hero-content {
