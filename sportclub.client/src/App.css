@@ -5,30 +5,24 @@
     text-align: center;
 }
 
-@media (min-width: 1280px) {
-    #root {
-        max-width: 1280px;
-    }
-}
 body {
     font-family: var(--font-family);
     color: var(--dark-color);
-    background-color: #202020;
+    background-color: #181818;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 tr:nth-child(even) {
-    background: #F2F2F2;
+    background: #2c2c2c;
 }
 
 tr:nth-child(odd) {
-    background: #FFF;
+    background: #202020;
 }
 
 th, td {

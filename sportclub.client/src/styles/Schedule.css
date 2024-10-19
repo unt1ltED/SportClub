@@ -1,6 +1,6 @@
 .schedule {
     padding: 40px 0;
-    text-align: center;
+    text-align: left;
 }
 
 .schedule-table {
@@ -13,7 +13,7 @@
     .schedule-table th, .schedule-table td {
         border: 1px solid #ccc;
         padding: 10px;
-        text-align: center;
+        text-align: left;
     }
 
     .schedule-table th {

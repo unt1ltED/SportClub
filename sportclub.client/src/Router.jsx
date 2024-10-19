@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import App from './App'; // Импортируй главный компонент
+import App from './App';
 import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import SocialMediaLinks from './pages/SocialMediaLinks';
 import Tariffs from './pages/Tariffs';
 import Schedule from './pages/Schedule';
+import Profile from "./pages/Profile";
 
 const AppRouter = () => {
     return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
                 <Route path="/social-media" element={<SocialMediaLinks />} />
                 <Route path="/tariffs" element={<Tariffs />} />
                 <Route path="/schedule" element={<Schedule />} />
+                <Route path="/profile" element={<Profile/> }/>
             </Routes>
         </Router>
     );
