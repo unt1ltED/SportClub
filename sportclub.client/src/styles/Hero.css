@@ -21,3 +21,6 @@
 .hero-title, .hero-subtitle, .hero-btn {
     margin: 10px 0;
 }
+.hero-btn{
+    width:300px;
+}

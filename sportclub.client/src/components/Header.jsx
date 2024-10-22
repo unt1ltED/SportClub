@@ -8,12 +8,22 @@ const Header = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [userRole, setUserRole] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        console.log("Token found:", token); // Логируем найденный токен
-        setIsAuthenticated(!!token); // Преобразуем значение токена в boolean
-    }, []); // Убираем зависимость isAuthenticated
+        const role = localStorage.getItem('role');
+
+        setIsAuthenticated(!!token);
+        //console.log("Token found:", token);
+        //console.log("Role found:", role);
+
+        if (role) {
+            const parsedRole = JSON.parse(role);
+            setUserRole(parsedRole);
+            //console.log("Parsed Role:", userRole);
+        }
+    }, []);
 
     const openLoginModal = () => setShowLoginModal(true);
     const closeLoginModal = () => setShowLoginModal(false);
@@ -23,7 +33,10 @@ const Header = () => {
 
     const logout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('role');
         setIsAuthenticated(false);
+        setUserRole(null);
     };
 
     return (
@@ -32,37 +45,50 @@ const Header = () => {
                 <div className="logo">
                     <Link to="/">SportClub</Link>
                 </div>
-                <nav className="nav">
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/tariffs">Tariffs</Link></li>
-                        <li><Link to="/schedule">Schedule</Link></li>
-                        <li><Link to="/contact">Contact</Link></li>
-                    </ul>
-                </nav>
-                <div className="auth-buttons">
-                    {!isAuthenticated ? (
-                        <>
-                            <button className="btn login" onClick={openLoginModal}>Log In</button>
-                            <button className="btn register" onClick={openRegisterModal}>Registration</button>
-                        </>
-                    ) : (
-                        <div className="profile-section">
-                            <Link to="/profile" className="profile-icon">
-                                <img src="/path/to/profile-icon.png" alt="Profile" />
-                            </Link>
-                            <button className="btn logout" onClick={logout}>Logout</button>
+                <nav className="navbar navbar-expand-lg navbar-dark">
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item"><Link to="/" className="nav-link">Home</Link></li>
+                            <li className="nav-item"><Link to="/tariffs" className="nav-link">Tariffs</Link></li>
+                            <li className="nav-item"><Link to="/schedule" className="nav-link">Schedule</Link></li>
+                            <li className="nav-item"><Link to="/contact" className="nav-link">Contact</Link></li>
+
+                            {userRole && userRole.role === 'Admin' && (
+                                <li className="nav-item">
+                                    <Link to="/adminpanel" className="nav-link">Admin Panel</Link>
+                                </li>
+                            )}
+                            {userRole && userRole.role === 'Coach' && (
+                                <li className="nav-item">
+                                    <Link to="/coachpanel" className="nav-link">Coach Panel</Link>
+                                </li>
+                            )}
+
+                        </ul>
+
+                        <div className="navbar-nav ml-auto">
+                            {!isAuthenticated ? (
+                                <>
+                                    <button className="btn btn-success" onClick={openLoginModal}>Log In</button>
+                                    <button className="btn btn-primary" onClick={openRegisterModal}>Registration</button>
+                                </>
+                            ) : (
+                                <div className="profile-section">
+                                    <Link to="/profile" className="profile-icon">
+                                        <img src="/path/to/profile-icon.png" alt="Profile" />
+                                    </Link>
+                                    <button className="btn btn-danger" onClick={logout}>Logout</button>
+                                </div>
+                            )}
                         </div>
-                    )}
-                </div>
-                <div className="burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                    </div>
+                </nav>
             </div>
 
-            {showLoginModal && <LoginModal closeModal={closeLoginModal} setIsAuthenticated={setIsAuthenticated} />}
+            {showLoginModal && <LoginModal closeModal={closeLoginModal} setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole} />}
             {showRegisterModal && <RegisterModal closeModal={closeRegisterModal} />}
         </header>
     );

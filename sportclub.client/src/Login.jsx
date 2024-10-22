@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Register_Login.css';
 
-const LoginModal = ({ closeModal, setIsAuthenticated }) => {
+const LoginModal = ({ closeModal, setIsAuthenticated, setUserRole }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,14 +19,18 @@ const LoginModal = ({ closeModal, setIsAuthenticated }) => {
                 }
             });
 
-            console.log('Login successful:', response.data);
+            //console.log('Login successful:', response.data);
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user))
-            console.log(response.data.user);
+            localStorage.setItem('role',JSON.stringify(response.data.role))
+            //console.log(response.data.user);
+            //console.log(response.data.role);
 
 
 
             setIsAuthenticated(true);
+            setUserRole(response.data.role);
+            //console.log(setUserRole)
             closeModal();
         } catch (error) {
             console.error('Login failed:', error.response?.data.errors || error.message);

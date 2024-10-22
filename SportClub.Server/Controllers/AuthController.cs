@@ -63,7 +63,7 @@ namespace SportClub.Server.Controllers
                 return Unauthorized("Неверный email или пароль.");
 
             var sessionToken = _authService.GenerateSessionToken();
-            return Ok(new { Token = sessionToken, User = new { user.Username, user.Email, user.PhoneNumber, user.PasswordHash, user.Salt } });
+            return Ok(new { Token = sessionToken, User = new { user.Username, user.Email, user.PhoneNumber, user.PasswordHash, user.Salt }, Role = new { user.Role } });
         }
     }
 }
