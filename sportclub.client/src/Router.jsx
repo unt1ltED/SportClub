@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import App from './App';
 import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -9,7 +9,6 @@ import Schedule from './pages/Schedule';
 import Profile from "./pages/Profile";
 import AdminPanel from './pages/AdminPanel';
 import CoachPanel from './pages/CoachPanel';
-import ProtectedRoute from './ProtectedRoute';
 
 const AppRouter = () => {
     const [userRole, setUserRole] = useState(null);
@@ -32,25 +31,24 @@ const AppRouter = () => {
                 <Route path="/tariffs" element={<Tariffs />} />
                 <Route path="/schedule" element={<Schedule />} />
                 <Route path="/profile" element={<Profile />} />
-
                 <Route
                     path="/adminpanel"
                     element={
-                        <ProtectedRoute
-                            userRole={userRole}
-                            allowedRoles={['Admin']}
-                            element={<AdminPanel />}
-                        />
+                        userRole && userRole.role === 'Admin' ? (
+                            <AdminPanel />
+                        ) : (
+                            <Navigate to="/" />
+                        )
                     }
                 />
                 <Route
                     path="/coachpanel"
                     element={
-                        <ProtectedRoute
-                            userRole={userRole}
-                            allowedRoles={['Coach']}
-                            element={<CoachPanel />}
-                        />
+                        userRole && userRole.role === 'Coach' ? (
+                            <CoachPanel />
+                        ) : (
+                            <Navigate to="/" />
+                        )
                     }
                 />
             </Routes>
