@@ -16,12 +16,12 @@ const Header = () => {
 
         setIsAuthenticated(!!token);
         //console.log("Token found:", token);
-        //console.log("Role found:", role);
+        console.log("Role found:", role);
 
         if (role) {
             const parsedRole = JSON.parse(role);
             setUserRole(parsedRole);
-            //console.log("Parsed Role:", userRole);
+            console.log("Parsed Role:", userRole);
         }
     }, []);
 

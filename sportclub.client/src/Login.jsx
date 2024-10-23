@@ -24,13 +24,13 @@ const LoginModal = ({ closeModal, setIsAuthenticated, setUserRole }) => {
             localStorage.setItem('user', JSON.stringify(response.data.user))
             localStorage.setItem('role',JSON.stringify(response.data.role))
             //console.log(response.data.user);
-            //console.log(response.data.role);
+            console.log(response.data.role);
 
 
 
             setIsAuthenticated(true);
             setUserRole(response.data.role);
-            //console.log(setUserRole)
+            console.log(setUserRole)
             closeModal();
         } catch (error) {
             console.error('Login failed:', error.response?.data.errors || error.message);

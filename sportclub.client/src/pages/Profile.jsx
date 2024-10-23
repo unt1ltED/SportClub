@@ -105,7 +105,7 @@ const Profile = () => {
                     <li>No bookings found.</li>
                 )}
             </ul>
-            <Footer />
+            <div class="fixed-bottom"><Footer /></div>
         </div>
     );
 };

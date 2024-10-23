@@ -15,7 +15,7 @@ function Contact() {
                     <li>Address: 123 Fitness St, Sport City</li>
                 </ul>
             </main>
-            <Footer />
+            <div class="fixed-bottom"><Footer /></div>
         </>
     );
 }

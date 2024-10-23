@@ -14,7 +14,7 @@ function SocialMediaLinks() {
                     <li><a href="https://instagram.com/sportclub" target="_blank">Instagram</a></li>
                 </ul>
             </div>
-            <Footer />
+            <div class="fixed-bottom"><Footer /></div>
         </>
     );
 }
