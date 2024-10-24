@@ -1,0 +1,108 @@
+/* Profile.css */
+
+/* Основной стиль для контейнера профиля */
+.profile {
+    max-width: 800px; /* Максимальная ширина для профиля */
+    margin: 0 auto; /* Центрирование по горизонтали */
+    padding: 30px; /* Отступы */
+    background-color: #ffffff; /* Белый фон */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+    /* Заголовок профиля */
+    .profile h2 {
+        font-size: 28px; /* Размер шрифта для заголовка */
+        margin-bottom: 20px; /* Отступ снизу */
+        color: #333; /* Цвет текста */
+        text-align: center; /* Центрирование текста */
+    }
+
+/* Стили для секции информации о пользователе */
+.user-info {
+    margin-bottom: 30px; /* Отступ снизу */
+    padding: 15px; /* Внутренние отступы */
+    background-color: #f0f8ff; /* Светлый фон для секции */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+    /* Стили для информации о пользователе */
+    .user-info p {
+        margin: 10px 0; /* Отступы для параграфов */
+        font-size: 16px; /* Размер шрифта */
+        color: #555; /* Цвет текста */
+    }
+
+/* Стили для секции бронирований */
+.bookings {
+    margin-top: 20px; /* Отступ сверху */
+}
+
+/* Стили для таблицы бронирований */
+.profile table {
+    width: 100%; /* Ширина таблицы */
+    border-collapse: collapse; /* Убираем пробелы между ячейками */
+    margin-top: 15px; /* Отступ сверху */
+}
+
+.profile th,
+.profile td {
+    padding: 10px; /* Внутренние отступы */
+    border: 1px solid #ddd; /* Рамка для ячеек */
+    text-align: left; /* Выравнивание текста */
+}
+
+.profile th {
+    background-color: #007bff; /* Цвет фона заголовков */
+    color: white; /* Цвет текста заголовков */
+}
+
+/* Стили для кнопок */
+.profile button {
+    padding: 8px 12px; /* Уменьшенные отступы для кнопок */
+    margin-right: 10px; /* Отступ между кнопками */
+    background-color: #007bff; /* Цвет фона */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s, transform 0.2s; /* Плавный переход */
+    font-size: 14px; /* Размер шрифта для кнопок */
+}
+
+    .profile button:hover {
+        background-color: #0056b3; /* Цвет фона при наведении */
+        transform: scale(1.05); /* Увеличение кнопки при наведении */
+    }
+
+/* Стили для форм */
+.profile label {
+    display: block; /* Блочный элемент */
+    margin-top: 15px; /* Отступ сверху */
+    color: #333; /* Цвет текста */
+    font-weight: bold; /* Полужирный текст */
+}
+
+.profile input {
+    width: 100%; /* Ширина 100% */
+    padding: 10px; /* Внутренние отступы */
+    margin-top: 5px; /* Отступ сверху */
+    border: 1px solid #ccc; /* Рамка */
+    border-radius: 5px; /* Закругленные углы */
+    font-size: 16px; /* Размер шрифта */
+}
+
+/* Отдельные стили для ошибок */
+.error-message {
+    color: red; /* Цвет текста ошибок */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+/* Стили для загрузки */
+.loading-message {
+    text-align: center; /* Центрирование текста */
+    font-size: 18px; /* Размер шрифта */
+    color: #007bff; /* Цвет текста */
+    margin-top: 20px; /* Отступ сверху */
+}

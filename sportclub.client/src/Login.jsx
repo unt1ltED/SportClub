@@ -23,8 +23,7 @@ const LoginModal = ({ closeModal, setIsAuthenticated, setUserRole }) => {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user))
             localStorage.setItem('role',JSON.stringify(response.data.role))
-            localStorage.setItem('userid',JSON.stringify(response.data.userId))
-            //console.log(response.data.user);
+            console.log(response.data.user);
             //console.log(response.data.role);
             //console.log(response.data.userId);
 
@@ -34,7 +33,7 @@ const LoginModal = ({ closeModal, setIsAuthenticated, setUserRole }) => {
             setUserRole(response.data.role);
             //console.log(setUserRole)
             closeModal();
-            window.location.reload();
+            //window.location.reload();
         } catch (error) {
             console.error('Login failed:', error.response?.data.errors || error.message);
         }

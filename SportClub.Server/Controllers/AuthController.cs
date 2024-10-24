@@ -65,7 +65,7 @@ namespace SportClub.Server.Controllers
             var sessionToken = _authService.GenerateSessionToken();
             var userId = user.Id;
             Console.WriteLine($"UserId: {userId}");
-            return Ok(new { Token = sessionToken, User = new {  user.Username, user.Email, user.PhoneNumber, user.PasswordHash, user.Salt }, Role = new { user.Role }, UserId = user.Id });
+            return Ok(new { Token = sessionToken, User = new { user.Id,  user.Username, user.Email, user.PhoneNumber, user.PasswordHash, user.Salt }, Role = new { user.Role } });
 
             
 

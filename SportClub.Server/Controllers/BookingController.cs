@@ -12,28 +12,24 @@ public class BookingController : ControllerBase
         _context = context;
     }
 
-    // POST: api/booking
     [HttpPost]
     public async Task<IActionResult> BookTraining([FromBody] BookingRequest request)
     {
-        // Проверяем, существует ли тренировка
         var training = await _context.Schedules.FindAsync(request.TrainingId);
         if (training == null)
         {
             return NotFound(new { message = "Training not found" });
         }
 
-        // Проверяем, доступно ли еще место
         if (training.BookedSlots >= training.Capacity)
         {
             return BadRequest(new { message = "No available slots for this training" });
         }
 
-        // Создаем новую запись в таблице Booking
         var booking = new Booking
         {
             ClientId = request.ClientId,
-            TrainingSessionId = request.TrainingId
+            ScheduleId = request.TrainingId
         };
         _context.Bookings.Add(booking);
 

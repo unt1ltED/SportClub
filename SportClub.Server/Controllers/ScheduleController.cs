@@ -64,7 +64,6 @@ public class ScheduleController : ControllerBase
         return Ok(response);
     }
 
-    // Метод для записи пользователя на тренировку
     [HttpPost("{id}/book")]
     public async Task<IActionResult> BookTraining(int id, [FromBody] BookingRequest request)
     {
@@ -74,32 +73,28 @@ public class ScheduleController : ControllerBase
             return NotFound(new { message = "Training not found" });
         }
 
-        // Проверяем, не записан ли уже пользователь на эту тренировку
         var existingBooking = await _context.Bookings
-            .FirstOrDefaultAsync(b => b.TrainingSessionId == id && b.ClientId == request.ClientId);
+            .FirstOrDefaultAsync(b => b.ScheduleId == id && b.ClientId == request.ClientId);
 
         if (existingBooking != null)
         {
             return BadRequest(new { message = "User is already booked for this training session." });
         }
 
-        // Проверка, есть ли свободные места
         if (training.BookedSlots >= training.Capacity)
         {
             return BadRequest(new { message = "No available slots for this training session." });
         }
 
-        // Создаем запись о бронировании
         var booking = new Booking
         {
             ClientId = request.ClientId,
-            TrainingSessionId = id,
+            ScheduleId = id,
             BookingDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
         };
 
         _context.Bookings.Add(booking);
 
-        // Обновляем количество забронированных мест
         training.BookedSlots += 1;
         _context.Schedules.Update(training);
 
@@ -108,15 +103,33 @@ public class ScheduleController : ControllerBase
         return Ok(new { message = "Booking successful", bookedSlots = training.BookedSlots });
     }
 
-    // Метод для получения забронированных тренировок пользователя
-    [HttpGet("booked/{clientId}")]
-    public async Task<IActionResult> GetBookedTrainings(int clientId)
+    [HttpGet("client/{clientId}")]
+    public async Task<IActionResult> GetTrainingsByClient(int clientId)
     {
-        var bookedTrainings = await _context.Bookings
+        var bookings = await _context.Bookings
             .Where(b => b.ClientId == clientId)
-            .Select(b => b.TrainingSessionId)
+            .Include(b => b.Schedule)
             .ToListAsync();
 
-        return Ok(bookedTrainings);
+        var response = bookings.Select(b => new TrainingResponseDto
+        {
+            Id = b.Schedule.Id,
+            Title = b.Schedule.Title,
+            DateTime = b.Schedule.DateTime,
+            Capacity = b.Schedule.Capacity,
+            BookedSlots = b.Schedule.BookedSlots
+        }).ToList();
+
+        if (!response.Any())
+        {
+            return NotFound();
+        }
+
+        return Ok(response);
     }
+
+
+
+
+
 }
