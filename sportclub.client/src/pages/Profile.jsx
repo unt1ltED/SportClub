@@ -31,7 +31,7 @@ const Profile = () => {
 
     const handleSave = async () => {
         try {
-            const res = await axios.put('/api/profile', updatedProfile);
+            const res = await axios.put('https://localhost:7058/api/profile', updatedProfile);
             setProfile(res.data.user);
             localStorage.setItem('user', JSON.stringify(res.data.user));
             setEditMode(false);

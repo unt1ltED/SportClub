@@ -16,7 +16,7 @@
 
 /* Лого */
 .logo a {
-    font-size: 3rem; 
+    font-size: 2rem; 
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -46,6 +46,21 @@
             background-color: #3a3a3a;
             border-radius: 5px;
         }
+
+.nav-link {
+    font-size: 1.2rem;
+    margin-left: 20px;
+}
+.navbar-nav {
+    margin-right: 50px;
+}
+
+.profile-section{
+    display:flex;
+    flex-direction:row;
+}
+
+
 
 /* Кнопки аутентификации */
 .auth-buttons {
@@ -115,6 +130,16 @@
             margin-right: 20px;
             margin-bottom: 10px;
         }
+
+    .nav-link {
+        font-size: 1rem;
+        
+        
+    }
+
+    .navbar-nav {
+        
+    }
 }
 
 @media (max-width: 1024px) {
