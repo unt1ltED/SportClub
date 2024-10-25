@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../styles/pagesStyles.css'
 
 function Contact() {
     return (
@@ -15,7 +16,7 @@ function Contact() {
                     <li>Address: 123 Fitness St, Sport City</li>
                 </ul>
             </main>
-            <div class="fixed-bottom"><Footer /></div>
+            <div className="fixed-bottom"><Footer /></div>
         </>
     );
 }

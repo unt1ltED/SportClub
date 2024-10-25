@@ -55,9 +55,28 @@
     margin-right: 50px;
 }
 
-.profile-section{
-    display:flex;
-    flex-direction:row;
+.profile-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Центрируем элементы по вертикали */
+}
+
+.logout-button {
+    background: none; /* Убираем фоновый цвет */
+    border: none; /* Убираем рамку */
+    padding: 0; /* Убираем отступы */
+    cursor: pointer; /* Указываем, что это кнопка */
+}
+
+    .logout-button img {
+        width: 30px; /* Установите желаемый размер */
+        height: auto; /* Сохраняем пропорции */
+    }
+
+
+.profile-icon {
+    margin-right: 15px; /* Устанавливаем отступ справа для иконки профиля */
 }
 
 

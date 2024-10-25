@@ -2,18 +2,21 @@ import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
-import Plans from './components/Plans';
-import Schedule from './components/Schedule';
-import Coaches from './components/Coaches';
+import About from './components/About';
+import Facilities from './components/Facilities';
+import News from './components/News';
+import './styles/AppContainer.css'
 
 function App() {
     return (
         <div className="App">
             <Header />
-            <Hero />
-            <Plans />
-            <Schedule />
-            <Coaches />
+            <div className="app-container">
+                <Hero />
+                <About />
+                <Facilities />
+                <News />
+            </div>
             <Footer />
         </div>
     );

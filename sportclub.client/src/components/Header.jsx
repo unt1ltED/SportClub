@@ -78,9 +78,12 @@ const Header = () => {
                             ) : (
                                 <div className="profile-section">
                                     <Link to="/profile" className="profile-icon">
-                                        <img src="/path/to/profile-icon.png" alt="Profile" />
+                                            <img src="src/img/profile_icon.svg" alt="Profile" width="50" height="50" />
                                     </Link>
-                                    <button className="btn btn-danger" onClick={logout}>Logout</button>
+                                        <button className="btn btn-danger logout-button" onClick={logout}>
+                                            <img src="src/img/exit_icon.svg" alt="Logout" />
+                                        </button>
+
                                 </div>
                             )}
                         </div>

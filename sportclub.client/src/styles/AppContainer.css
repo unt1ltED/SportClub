@@ -1,0 +1,8 @@
+.app-container {
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Вертикальное выравнивание */
+    align-items: center; /* Горизонтальное центрирование элементов */
+    justify-content: center; /* Вертикальное центрирование элементов */
+}

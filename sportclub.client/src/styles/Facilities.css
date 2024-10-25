@@ -1,0 +1,30 @@
+
+.facilities {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+    .facilities h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .facilities ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .facilities li {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        background-color: #e7f1ff;
+        padding: 10px;
+        border-radius: 8px;
+        transition: background-color 0.3s;
+        max-width:1200px;
+    }
+
+        .facilities li:hover {
+            background-color: #d1e3ff;
+        }
