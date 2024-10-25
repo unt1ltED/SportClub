@@ -45,16 +45,19 @@ export default defineConfig({
         }
     },
     server: {
-        proxy: {
-            '^/weatherforecast': {
-                target: 'https://localhost:7058/',
-                secure: false
-            }
-        },
+        //proxy: {
+        //    '^/weatherforecast': {
+        //        target: 'https://localhost:7058/',
+        //        secure: false
+        //    }
+        //},
         port: 5173,
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
+        },
+        mimeTypes: {
+            'application/javascript': ['jsx']
         }
     }
 })
