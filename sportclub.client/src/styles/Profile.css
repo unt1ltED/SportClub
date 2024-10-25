@@ -1,108 +1,96 @@
-/* Profile.css */
-
-/* Основной стиль для контейнера профиля */
 .profile {
-    max-width: 800px; /* Максимальная ширина для профиля */
-    margin: 0 auto; /* Центрирование по горизонтали */
-    padding: 30px; /* Отступы */
-    background-color: #ffffff; /* Белый фон */
-    border-radius: 10px; /* Закругленные углы */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Тень */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-    /* Заголовок профиля */
     .profile h2 {
-        font-size: 28px; /* Размер шрифта для заголовка */
-        margin-bottom: 20px; /* Отступ снизу */
-        color: #333; /* Цвет текста */
-        text-align: center; /* Центрирование текста */
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
     }
 
-/* Стили для секции информации о пользователе */
 .user-info {
-    margin-bottom: 30px; /* Отступ снизу */
-    padding: 15px; /* Внутренние отступы */
-    background-color: #f0f8ff; /* Светлый фон для секции */
-    border-radius: 8px; /* Закругленные углы */
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-    /* Стили для информации о пользователе */
     .user-info p {
-        margin: 10px 0; /* Отступы для параграфов */
-        font-size: 16px; /* Размер шрифта */
-        color: #555; /* Цвет текста */
+        margin: 10px 0;
+        font-size: 16px;
+        color: #555;
     }
 
-/* Стили для секции бронирований */
 .bookings {
-    margin-top: 20px; /* Отступ сверху */
+    margin-top: 20px;
 }
 
-/* Стили для таблицы бронирований */
 .profile table {
-    width: 100%; /* Ширина таблицы */
-    border-collapse: collapse; /* Убираем пробелы между ячейками */
-    margin-top: 15px; /* Отступ сверху */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
 }
 
 .profile th,
 .profile td {
-    padding: 10px; /* Внутренние отступы */
-    border: 1px solid #ddd; /* Рамка для ячеек */
-    text-align: left; /* Выравнивание текста */
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
 .profile th {
-    background-color: #007bff; /* Цвет фона заголовков */
-    color: white; /* Цвет текста заголовков */
+    background-color: #007bff;
+    color: white;
 }
 
-/* Стили для кнопок */
 .profile button {
-    padding: 8px 12px; /* Уменьшенные отступы для кнопок */
-    margin-right: 10px; /* Отступ между кнопками */
-    background-color: #007bff; /* Цвет фона */
-    color: white; /* Цвет текста */
-    border: none; /* Убираем рамку */
-    border-radius: 5px; /* Закругленные углы */
-    cursor: pointer; /* Курсор при наведении */
-    transition: background-color 0.3s, transform 0.2s; /* Плавный переход */
-    font-size: 14px; /* Размер шрифта для кнопок */
+    padding: 8px 12px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 14px;
 }
 
     .profile button:hover {
-        background-color: #0056b3; /* Цвет фона при наведении */
-        transform: scale(1.05); /* Увеличение кнопки при наведении */
+        background-color: #0056b3;
+        transform: scale(1.05);
     }
 
-/* Стили для форм */
 .profile label {
-    display: block; /* Блочный элемент */
-    margin-top: 15px; /* Отступ сверху */
-    color: #333; /* Цвет текста */
-    font-weight: bold; /* Полужирный текст */
+    display: block;
+    margin-top: 15px;
+    color: #333;
+    font-weight: bold;
 }
 
 .profile input {
-    width: 100%; /* Ширина 100% */
-    padding: 10px; /* Внутренние отступы */
-    margin-top: 5px; /* Отступ сверху */
-    border: 1px solid #ccc; /* Рамка */
-    border-radius: 5px; /* Закругленные углы */
-    font-size: 16px; /* Размер шрифта */
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-/* Отдельные стили для ошибок */
 .error-message {
-    color: red; /* Цвет текста ошибок */
-    margin-top: 10px; /* Отступ сверху */
+    color: red;
+    margin-top: 10px;
 }
 
-/* Стили для загрузки */
 .loading-message {
-    text-align: center; /* Центрирование текста */
-    font-size: 18px; /* Размер шрифта */
-    color: #007bff; /* Цвет текста */
-    margin-top: 20px; /* Отступ сверху */
+    text-align: center;
+    font-size: 18px;
+    color: #007bff;
+    margin-top: 20px;
 }

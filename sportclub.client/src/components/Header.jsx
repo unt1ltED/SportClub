@@ -2,26 +2,24 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Header.css';
 import LoginModal from '../Login';
 import RegisterModal from '../Register';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userRole, setUserRole] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
         const role = localStorage.getItem('role');
 
         setIsAuthenticated(!!token);
-        //console.log("Token found:", token);
-        console.log("Role found:", role);
 
         if (role) {
             const parsedRole = JSON.parse(role);
             setUserRole(parsedRole);
-            console.log("Parsed Role:", userRole);
         }
     }, []);
 
@@ -35,8 +33,11 @@ const Header = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         localStorage.removeItem('role');
+
         setIsAuthenticated(false);
         setUserRole(null);
+
+        navigate('/');
     };
 
     return (
@@ -78,12 +79,11 @@ const Header = () => {
                             ) : (
                                 <div className="profile-section">
                                     <Link to="/profile" className="profile-icon">
-                                            <img src="src/img/profile_icon.svg" alt="Profile" width="50" height="50" />
+                                        <img src="src/img/profile_icon.svg" alt="Profile" width="50" height="50" />
                                     </Link>
-                                        <button className="btn btn-danger logout-button" onClick={logout}>
-                                            <img src="src/img/exit_icon.svg" alt="Logout" />
-                                        </button>
-
+                                    <button className="btn btn-danger logout-button" onClick={logout}>
+                                        <img src="src/img/exit_icon.svg" alt="Logout" />
+                                    </button>
                                 </div>
                             )}
                         </div>

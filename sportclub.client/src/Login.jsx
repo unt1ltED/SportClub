@@ -5,6 +5,7 @@ import './Register_Login.css';
 const LoginModal = ({ closeModal, setIsAuthenticated, setUserRole }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState('');
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -19,22 +20,17 @@ const LoginModal = ({ closeModal, setIsAuthenticated, setUserRole }) => {
                 }
             });
 
-            //console.log('Login successful:', response.data);
             localStorage.setItem('token', response.data.token);
-            localStorage.setItem('user', JSON.stringify(response.data.user))
-            localStorage.setItem('role',JSON.stringify(response.data.role))
-            //console.log(response.data.user);
-            //console.log(response.data.role);
-            //console.log(response.data.userId);
-
-
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('role', JSON.stringify(response.data.role));
 
             setIsAuthenticated(true);
             setUserRole(response.data.role);
-            //console.log(setUserRole)
+            setLoginError('');
             closeModal();
             window.location.reload();
         } catch (error) {
+            setLoginError('Incorrect email or password');
             console.error('Login failed:', error.response?.data.errors || error.message);
         }
     };
@@ -59,6 +55,7 @@ const LoginModal = ({ closeModal, setIsAuthenticated, setUserRole }) => {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
+                    {loginError && <p className="error">{loginError}</p>}
                     <button type="submit">Log In</button>
                 </form>
             </div>

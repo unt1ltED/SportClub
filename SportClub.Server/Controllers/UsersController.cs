@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportClub.Server.Models;
-using SportClub.Server.Services; // Подключаем AuthService для работы с хэшированием
-using System.Threading.Tasks;
 using SportClub.Server.Services;
+using System.Threading.Tasks;
 
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
     private readonly AppDbContext _context;
-    private readonly AuthService _authService; // Добавим сервис аутентификации для хэширования паролей
+    private readonly AuthService _authService;
 
     public UsersController(AppDbContext context, AuthService authService)
     {

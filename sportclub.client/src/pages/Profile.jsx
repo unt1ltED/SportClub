@@ -12,8 +12,8 @@ const Profile = () => {
     const [editMode, setEditMode] = useState(false);
     const [changePasswordMode, setChangePasswordMode] = useState(false);
     const [updatedProfile, setUpdatedProfile] = useState({});
+    const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -21,22 +21,22 @@ const Profile = () => {
             const userProfile = JSON.parse(storedUser);
             setProfile(userProfile);
             fetchBookings(userProfile.id);
-            console.log(userProfile.id);
+            //console.log('User ID:', userProfile.id);
         }
         setLoading(false);
     }, []);
 
     const fetchBookings = async (clientId) => {
-        console.log("Fetching bookings for client ID:", clientId);
+        //console.log("Fetching bookings for client ID:", clientId);
 
         if (clientId) {
             try {
                 const res = await axios.get(`https://localhost:7058/api/schedule/client/${clientId}`);
-                console.log("Bookings response:", res.data);
+                //console.log("Bookings response:", res.data);
                 setBookings(Array.isArray(res.data) ? res.data : []);
             } catch (err) {
                 setError(err.response?.data?.message || 'Failed to fetch bookings');
-                console.error("Fetch error:", err);
+                //console.error("Fetch error:", err);
                 setBookings([]);
             }
         }
@@ -54,32 +54,45 @@ const Profile = () => {
 
     const handleSave = async () => {
         try {
-            const res = await axios.put('https://localhost:7058/api/profile', updatedProfile);
+            const token = localStorage.getItem('token');
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            const res = await axios.put(`https://localhost:7058/api/users/${profile.id}`, updatedProfile, config);
+
             setProfile(res.data.user);
             localStorage.setItem('user', JSON.stringify(res.data.user));
             setEditMode(false);
             setError(null);
         } catch (err) {
+            //console.error("Error updating profile:", err);
             setError(err.response?.data?.message || 'An error occurred while saving');
         }
     };
 
     const handleChangePassword = async () => {
-        if (newPassword !== confirmPassword) {
-            setError('Passwords do not match');
-            return;
-        }
-
         try {
-            await axios.put('https://localhost:7058/api/profile/change-password', {
+            const token = localStorage.getItem('token');
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            await axios.put(`https://localhost:7058/api/users/${profile.id}/change-password`, {
+                currentPassword,
                 newPassword,
-            });
+            }, config);
             alert('Password changed successfully');
             setChangePasswordMode(false);
+            setCurrentPassword('');
             setNewPassword('');
-            setConfirmPassword('');
             setError(null);
         } catch (err) {
+            //console.error("Error changing password:", err);
             setError(err.response?.data?.message || 'An error occurred while changing password');
         }
     };
@@ -143,19 +156,19 @@ const Profile = () => {
                     <div>
                         <h3>Change Password</h3>
                         <label>
+                            Current Password:
+                            <input
+                                type="password"
+                                value={currentPassword}
+                                onChange={(e) => setCurrentPassword(e.target.value)}
+                            />
+                        </label>
+                        <label>
                             New Password:
                             <input
                                 type="password"
                                 value={newPassword}
                                 onChange={(e) => setNewPassword(e.target.value)}
-                            />
-                        </label>
-                        <label>
-                            Confirm New Password:
-                            <input
-                                type="password"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
                             />
                         </label>
                         <button onClick={handleChangePassword}>Change Password</button>
@@ -180,10 +193,8 @@ const Profile = () => {
                                 </tr>
                             ))}
                         </tbody>
-
                     </table>
                 </div>
-
             </div>
             <div className="fixed-bottom"><Footer /></div>
         </>

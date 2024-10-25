@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import AdminPanel from './pages/AdminPanel';
 import CoachPanel from './pages/CoachPanel';
 
+
 const AppRouter = () => {
     const [userRole, setUserRole] = useState(null);
 
@@ -51,6 +52,9 @@ const AppRouter = () => {
                         )
                     }
                 />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/social-media" element={<SocialMediaLinks />} />
             </Routes>
         </Router>
     );

@@ -7,7 +7,6 @@ const AssignCoach = () => {
 
     const handleAssignCoach = async () => {
         try {
-            // Шаг 1: Найти пользователя по почте
             const userResponse = await fetch(`https://localhost:7058/api/users?email=${email}`);
             const user = await userResponse.json();
 
@@ -16,7 +15,6 @@ const AssignCoach = () => {
                 return;
             }
 
-            // Шаг 2: Обновить роль пользователя на "Coach"
             await fetch(`https://localhost:7058/api/users/${user.id}/role`, {
                 method: 'PUT',
                 headers: {
@@ -25,7 +23,6 @@ const AssignCoach = () => {
                 body: JSON.stringify({ role: 'Coach' }),
             });
 
-            // Шаг 3: Добавить запись в таблицу Тренеров
             await fetch('https://localhost:7058/api/coaches', {
                 method: 'POST',
                 headers: {

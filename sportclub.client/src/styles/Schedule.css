@@ -10,8 +10,8 @@
 .training-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Центрируем карточки */
-    gap: 1rem; /* Отступ между карточками */
+    justify-content: center;
+    gap: 1rem;
 }
 
 .training-card {
@@ -20,8 +20,8 @@
     border-radius: 8px;
     padding: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 300px; /* Ширина карточек */
-    transition: transform 0.2s, box-shadow 0.2s; /* Плавный переход для трансформации и тени */
+    width: 300px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
     .training-card:hover {
