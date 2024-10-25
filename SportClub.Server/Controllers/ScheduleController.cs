@@ -74,9 +74,9 @@ public class ScheduleController : ControllerBase
         }
 
         var existingBooking = await _context.Bookings
-            .FirstOrDefaultAsync(b => b.ScheduleId == id && b.ClientId == request.ClientId);
+            .AnyAsync(b => b.ScheduleId == id && b.ClientId == request.ClientId);
 
-        if (existingBooking != null)
+        if (existingBooking)
         {
             return BadRequest(new { message = "User is already booked for this training session." });
         }
@@ -90,7 +90,7 @@ public class ScheduleController : ControllerBase
         {
             ClientId = request.ClientId,
             ScheduleId = id,
-            BookingDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            BookingDate = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss") 
         };
 
         _context.Bookings.Add(booking);
@@ -102,6 +102,7 @@ public class ScheduleController : ControllerBase
 
         return Ok(new { message = "Booking successful", bookedSlots = training.BookedSlots });
     }
+
 
     [HttpGet("client/{clientId}")]
     public async Task<IActionResult> GetTrainingsByClient(int clientId)
@@ -127,9 +128,4 @@ public class ScheduleController : ControllerBase
 
         return Ok(response);
     }
-
-
-
-
-
 }

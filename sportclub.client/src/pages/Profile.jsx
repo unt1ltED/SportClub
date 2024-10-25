@@ -28,14 +28,16 @@ const Profile = () => {
 
     const fetchBookings = async (clientId) => {
         console.log("Fetching bookings for client ID:", clientId);
+
         if (clientId) {
             try {
                 const res = await axios.get(`https://localhost:7058/api/schedule/client/${clientId}`);
                 console.log("Bookings response:", res.data);
-                setBookings(res.data);
+                setBookings(Array.isArray(res.data) ? res.data : []);
             } catch (err) {
                 setError(err.response?.data?.message || 'Failed to fetch bookings');
                 console.error("Fetch error:", err);
+                setBookings([]);
             }
         }
     };
@@ -171,19 +173,14 @@ const Profile = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {bookings.length > 0 ? (
-                                bookings.map((booking) => (
-                                    <tr key={booking.id}>
-                                        <td>{booking.title}</td>
-                                        <td>{new Date(booking.dateTime).toLocaleString()}</td>
-                                    </tr>
-                                ))
-                            ) : (
-                                <tr>
-                                    <td colSpan="3" className="text-center">No bookings found.</td>
+                            {bookings.length > 0 && bookings.map((booking) => (
+                                <tr key={booking.id}>
+                                    <td>{booking.title}</td>
+                                    <td>{new Date(booking.dateTime).toLocaleString()}</td>
                                 </tr>
-                            )}
+                            ))}
                         </tbody>
+
                     </table>
                 </div>
 

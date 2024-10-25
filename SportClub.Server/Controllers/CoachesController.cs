@@ -13,7 +13,6 @@ public class CoachesController : ControllerBase
         _context = context;
     }
 
-    // Метод для добавления записи о тренере
     [HttpPost]
     public async Task<IActionResult> AddCoach([FromBody] CoachDto coachDto)
     {
@@ -29,7 +28,6 @@ public class CoachesController : ControllerBase
         return CreatedAtAction(nameof(GetCoach), new { id = coach.Id }, coach);
     }
 
-    // Пример метода для получения тренера по ID (можете добавить по мере необходимости)
     [HttpGet("{id}")]
     public async Task<ActionResult<Coaches>> GetCoach(int id)
     {

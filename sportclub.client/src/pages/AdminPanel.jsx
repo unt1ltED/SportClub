@@ -1,12 +1,18 @@
 import React from 'react';
 import AssignCoach from '../components/AssignCoach';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 
 const AdminPanel = () => {
     return (
         <div>
+            <Header/>
             <h1>Admin Panel</h1>
-            <p>Welcome, Admin! Here you can manage users, courses, and more.</p>
-            <AssignCoach/>
+            <AssignCoach />
+            <div className="fixed-bottom">
+                <Footer />
+            </div>
         </div>
     );
 };
